@@ -11,7 +11,7 @@
   - **Galería**: tarjetas de mascotas con nombres, descripciones y botones.
   - **Estadísticas**: número de animales adoptados, voluntarios, etc.
   - **Footer**: enlaces útiles y una galería secundaria.
-## CSS (`style.txt`)**
+## CSS (`style.txt`)
 - Incluye `tailwind.css` con extensiones personalizadas.
 - Tipografía: **Space Grotesk** vía Google Fonts.
 - Modificadores de Tailwind extendidos, con clases personalizadas como:
@@ -30,7 +30,6 @@
   - `pgClass`, `pgDom`, `pgCall`: gestión del DOM y clases CSS.
 - Aplicación de presets de animaciones como `fadeInUp`, `bounce`, `zoomIn`, etc.
 - Adaptación automática para elementos con `data-pg-ia`.
-
 
 ## Tecnologías Usadas  
 
