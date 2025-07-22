@@ -1,6 +1,6 @@
 # PATITAS.PET - Reto Final AWS
 
-**Patitas.Pet** es una plantilla moderna y responsiva desarrollada para organizaciones sin fines de lucro que promueven la adopción de mascotas. Está construida sobre tecnologías potentes como **Tailwind CSS**, **GSAP** y **Pinegrow Interactions**, permitiendo un diseño atractivo y animaciones fluidas, con estilos personalizados que hacen que cada componente luzca profesional y amigable.
+**Patitas.Pet** es una plataforma web diseñada para conectar a personas interesadas en adoptar animales con asociaciones de adopción. Este repositorio contiene los archivos principales del proyecto: HTML, CSS y JavaScript, que conforman la estructura, el diseño y la funcionalidad básica del sitio.
 
 # Archivos
 ## HTML (`index.html`)
