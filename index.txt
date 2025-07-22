@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Design of the Week Template 10 - Pinegrow Web Editor</title>
+        <link href="tailwind_theme/tailwind.css" rel="stylesheet" type="text/css">
+        <script>/* Pinegrow Interactions, do not remove */ (function(){try{if(!document.documentElement.hasAttribute('data-pg-ia-disabled')) { window.pgia_small_mq=typeof pgia_small_mq=='string'?pgia_small_mq:'(max-width:767px)';window.pgia_large_mq=typeof pgia_large_mq=='string'?pgia_large_mq:'(min-width:768px)';var style = document.createElement('style');var pgcss='html:not(.pg-ia-no-preview) [data-pg-ia-hide=""] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show=""] {opacity:1;visibility:visible;display:block;}';if(document.documentElement.hasAttribute('data-pg-id') && document.documentElement.hasAttribute('data-pg-mobile')) {pgia_small_mq='(min-width:0)';pgia_large_mq='(min-width:99999px)'} pgcss+='@media ' + pgia_small_mq + '{ html:not(.pg-ia-no-preview) [data-pg-ia-hide="mobile"] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show="mobile"] {opacity:1;visibility:visible;display:block;}}';pgcss+='@media ' + pgia_large_mq + '{html:not(.pg-ia-no-preview) [data-pg-ia-hide="desktop"] {opacity:0;visibility:hidden;}html:not(.pg-ia-no-preview) [data-pg-ia-show="desktop"] {opacity:1;visibility:visible;display:block;}}';style.innerHTML=pgcss;document.querySelector('head').appendChild(style);}}catch(e){console&&console.log(e);}})()</script>
+    </head>
+    <body class="bg-gray-100 text-gray-500"> 
+        <header>
+            <div class="bg-white"> 
+                <div class="container flex flex-wrap items-center justify-center mx-auto py-2 md:justify-between"> 
+                    <div class="px-4 py-1 space-x-4">
+                        <a href="#" class="hover:text-secondary-400 text-secondary-500 text-sm">+00-00-00-00</a> <a href="#" class="hover:text-secondary-400 text-secondary-500 text-sm"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 inline mr-1 w-5"> 
+                                <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm9.06 8.683L5.648 6.238 4.353 7.762l7.72 6.555 7.581-6.56-1.308-1.513-6.285 5.439z"></path>                                 
+                            </svg>         info@patitas-pet.com </a>
+                    </div>                     
+                    <div class="flex-wrap inline-flex px-4 py-1 space-x-3"> <a href="#" class="hover:text-secondary-400 text-secondary-500" aria-label="facebook"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/> 
+                            </svg></a> <a href="#" class="hover:text-secondary-400 text-secondary-500" aria-label="twitter"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                <path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/> 
+                            </svg></a> <a href="#" class="hover:text-secondary-400 text-secondary-500" aria-label="instagram"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/> 
+                            </svg></a>
+                        <a href="#" class="hover:text-secondary-400 text-secondary-500" aria-label="linkedin"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/> 
+                            </svg></a>
+                        <a href="#" class="hover:text-secondary-400 text-secondary-500" aria-label="youtube"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/> 
+                            </svg></a> 
+                    </div>
+                </div>                 
+            </div>
+            <hr class="border-color3-500 opacity-25">
+            <div class="container mx-auto relative"> 
+                <nav class="flex flex-wrap items-center p-4"> <a href="#" class="font-bold font-serif hover:text-opacity-75 inline-flex items-center leading-none mr-4 text-gray-900 text-xl"> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="2em" xml:space="preserve" fill="currentColor" stroke-width="3px" viewBox="0 0 240 240" height="2em" class="mr-2">
+                            <g transform="translate(17.704 -9.215)">
+                                <path d="M92.45 183.38a61.38 61.38 0 00-30.07 15.35 9.84 9.84 0 01-15.9-3.73 61.65 61.65 0 11115.83-.18 9.87 9.87 0 01-16 3.9 61.43 61.43 0 00-30.07-15.35" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></path>
+                                <circle cx="17.18" cy="17.18" r="17.18" transform="rotate(-22.39 282.115 44.556)" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></circle>
+                                <circle cx="17.18" cy="17.18" r="17.18" transform="rotate(-22.39 179.693 -83.499)" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></circle>
+                                <circle cx="17.18" cy="17.18" r="17.18" transform="rotate(-67.61 176.48 -54.394)" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></circle>
+                                <circle cx="17.18" cy="17.18" r="17.18" transform="rotate(-67.61 119.616 -48.074)" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></circle>
+                                <circle cx="3.19" cy="3.19" r="3.19" transform="translate(101.16 179.05)" fill="#475f17"></circle>
+                                <path d="M89.72 137a20.84 20.84 0 00-20.84 20.84v.16" fill="none" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></path>
+                                <path d="M15.7 47.82h-2.75v-2.76a3.4 3.4 0 00-6.79 0v2.76H3.4a3.4 3.4 0 000 6.79h2.75v2.76a3.4 3.4 0 006.79 0v-2.76h2.76a3.4 3.4 0 000-6.79zm172.43 9.55h-2.76v-2.76a3.4 3.4 0 00-6.79 0v2.76h-2.76a3.4 3.4 0 000 6.79h2.76v2.76a3.4 3.4 0 006.79 0v-2.76h2.76a3.4 3.4 0 000-6.79zM25.25 203.82H22.5v-2.76a3.4 3.4 0 00-6.79 0v2.76h-2.76a3.4 3.4 0 000 6.79h2.75v2.76a3.4 3.4 0 006.79 0v-2.76h2.76a3.4 3.4 0 000-6.79z" fill="#475f17"></path>
+                            </g>
+                        </svg><span>Patitas.Pet</span> </a> 
+                    <button class="hover:bg-primary-500 hover:text-secondary-500 lg:hidden ml-auto px-3 py-2 rounded text-primary-500" data-name="nav-toggler" data-pg-ia='{"l":[{"name":"NabMenuToggler","trg":"click","a":{"l":[{"t":"^nav|[data-name=nav-menu]","l":[{"t":"set","p":0,"d":0,"l":{"class.remove":"hidden"}}]},{"t":"#gt# span:nth-of-type(1)","l":[{"t":"tween","p":0,"d":0.2,"l":{"rotationZ":45,"yPercent":300}}]},{"t":"#gt# span:nth-of-type(2)","l":[{"t":"tween","p":0,"d":0.2,"l":{"autoAlpha":0}}]},{"t":"#gt# span:nth-of-type(3)","l":[{"t":"tween","p":0,"d":0.2,"l":{"rotationZ":-45,"yPercent":-300}}]}]},"pdef":"true","trev":"true"}]}' data-pg-ia-apply="$nav [data-name=nav-toggler]"> <span class="block border-b-2 border-current my-1 w-6"></span> <span class="block border-b-2 border-current my-1 w-6"></span> <span class="block border-b-2 border-current my-1 w-6"></span> 
+                    </button>                     
+                    <div class="hidden space-y-2 w-full lg:flex lg:items-center lg:space-x-4 lg:space-y-0 lg:w-auto grow" data-name="nav-menu"> 
+                        <div class="flex flex-col ml-auto lg:flex-row"> <a href="#" class="hover:text-primary-500 py-2 text-gray-500 lg:p-4">Inicio</a>
+                            <a href="#" class="hover:text-primary-500 py-2 text-gray-500 lg:p-4">Patitas</a>
+                            <a href="#" class="hover:text-primary-500 py-2 text-gray-500 lg:p-4">About Us</a> 
+                        </div>                         
+                    </div>                     <a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-center text-gray-900">Iniciar Sesión</a>
+                </nav>
+            </div>
+        </header>
+        <section class="text-gray-300">
+            <div class="container mx-auto px-4">
+                <div class="overflow-hidden pb-6 poster pt-72 px-6 relative rounded-3xl md:py-36 lg:px-12">
+                    <div class="-mx-4 flex flex-wrap items-center space-y-6 lg:space-y-0">
+                        <div class="px-4 w-full md:w-8/12 xl:w-6/12"> 
+                            <p class="font-bold font-serif mb-1 text-primary-500 text-xl uppercase">Adopt A Pet</p>
+                            <h1 class="capitalize font-bold mb-2 text-4xl text-white md:leading-tight md:text-5xl lg:leading-tight lg:text-6xl">Thousands of homeless dogs, one act of kindness</h1>
+                            <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae congue tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac sagittis neque, vel egestas est.</p>
+                            <a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <main>
+            <div class="bg-opacity-70 bg-origin-border bg-primary-500 container mx-auto px-4 rounded-3xl"> 
+                <div class="-mx-4 flex flex-wrap items-center justify-center mb-12"> 
+                    <div class="px-4 text-center w-full md:w-10/12 xl:w-9/12"> 
+</div>                     
+                </div>
+                <div class="-mx-3 flex flex-wrap justify-center mb-12"> 
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12 xl:w-3/12"> 
+                        <div class="bg-white px-6 py-12 rounded-3xl text-center text-gray-400"> 
+                            <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDJ8fGRvZ3xlbnwwfHx8fDE2MzA0NjQwNjg&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=600&amp;h=600&amp;fit=crop" class="mb-4 mx-auto rounded-xl w-full sm:w-9/12" alt="..." width="600" height="600">
+                            <h4 class="font-bold mb-2 text-2xl text-gray-900">Duke</h4>
+                            <p class="mb-6 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>                         
+                    </div>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12 xl:w-3/12"> 
+                        <div class="bg-white px-6 py-12 rounded-3xl text-center text-gray-400"> 
+                            <img src="https://images.unsplash.com/photo-1589388431265-0977bffb5cf1?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDIxM3x8Y2F0fGVufDB8fHx8MTYzMDQ2Nzc5Mw&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=600&amp;h=600&amp;fit=crop" class="mb-4 mx-auto rounded-xl w-full sm:w-9/12" alt="..." width="600" height="600">
+                            <h4 class="font-bold mb-2 text-2xl text-gray-900">Bella</h4>
+                            <p class="mb-6 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>                         
+                    </div>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12 xl:w-3/12"> 
+                        <div class="bg-white px-6 py-12 rounded-3xl text-center text-gray-400"> 
+                            <img src="https://images.unsplash.com/photo-1589642344659-02a33f7d9f25?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDEzN3x8ZG9nfGVufDB8fHx8MTYzMDQ2NjkwMg&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=600&amp;h=600&amp;fit=crop" class="mb-4 mx-auto rounded-xl w-full sm:w-9/12" alt="..." width="600" height="600">
+                            <h4 class="font-bold mb-2 text-2xl text-gray-900">Milo</h4>
+                            <p class="mb-6 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>                         
+                    </div>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12 xl:w-3/12"> 
+                        <div class="bg-white px-6 py-12 rounded-3xl text-center text-gray-400"> 
+                            <img src="https://images.unsplash.com/photo-1518796745738-41048802f99a?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDF8fHJhYmJpdHxlbnwwfHx8fDE2MzA0Njc2NTA&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=600&amp;h=600&amp;fit=crop" class="mb-4 mx-auto rounded-xl w-full sm:w-9/12" alt="..." width="600" height="600">
+                            <h4 class="font-bold mb-2 text-2xl text-gray-900">Rocky</h4>
+                            <p class="mb-6 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>                         
+                    </div>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12 xl:w-3/12"> 
+                        <div class="bg-white px-6 py-12 rounded-3xl text-center text-gray-400"> 
+                            <img src="https://images.unsplash.com/photo-1533152162573-93ad94eb20f6?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDl8fGhhbXN0ZXJ8ZW58MHx8fHwxNjMwNDY3NjM3&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=600&amp;h=600&amp;fit=crop" class="mb-4 mx-auto rounded-xl w-full sm:w-9/12" alt="..." width="600" height="600">
+                            <h4 class="font-bold mb-2 text-2xl text-gray-900">Jack</h4>
+                            <p class="mb-6 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>                         
+                    </div>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12 xl:w-3/12"> 
+                        <div class="bg-white px-6 py-12 rounded-3xl text-center text-gray-400"> 
+                            <img src="https://images.unsplash.com/photo-1611759888490-e06814a678ee?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDk3fHxkb2d8ZW58MHx8fHwxNjMwNDY2ODU5&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=600&amp;h=600&amp;fit=crop" class="mb-4 mx-auto rounded-xl w-full sm:w-9/12" alt="..." width="600" height="600">
+                            <h4 class="font-bold mb-2 text-2xl text-gray-900">Cooper</h4>
+                            <p class="mb-6 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>                         
+                    </div>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12 xl:w-3/12"> 
+                        <div class="bg-white px-6 py-12 rounded-3xl text-center text-gray-400"> 
+                            <img src="https://images.unsplash.com/photo-1608335890650-e6d0a2a691b6?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDMzMHx8ZG9nfGVufDB8fHx8MTYzMDQ2ODAzOQ&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=600&amp;h=600&amp;fit=crop" class="mb-4 mx-auto rounded-xl w-full sm:w-9/12" alt="..." width="600" height="600">
+                            <h4 class="font-bold mb-2 text-2xl text-gray-900">Lola</h4>
+                            <p class="mb-6 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>                         
+                    </div>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12 xl:w-3/12"> 
+                        <div class="bg-white px-6 py-12 rounded-3xl text-center text-gray-400"> 
+                            <img src="https://images.unsplash.com/photo-1548366086-7f1b76106622?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDMwfHxjYXR8ZW58MHx8fHwxNjMwNDY3NzE4&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=600&amp;h=600&amp;fit=crop" class="mb-4 mx-auto rounded-xl w-full sm:w-9/12" alt="..." width="600" height="600">
+                            <h4 class="font-bold mb-2 text-2xl text-gray-900">Maggir</h4>
+                            <p class="mb-6 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><a href="#" class="bg-primary-500 hover:bg-primary-600 inline-block px-6 py-2 rounded-full text-gray-900">Adopt Now</a> 
+                        </div>                         
+                    </div>                     
+                </div>
+                <div>
+</div>
+            </div>
+            <section class="bg-secondary-500 py-12 text-white"> 
+                <div class="container mx-auto px-4 py-12 relative"> 
+                    <div class="-mx-4 flex flex-wrap items-center"> 
+                        <div class="p-4 w-full lg:w-5/12"> 
+                            <h2 class="capitalize font-bold mb-2 text-5xl text-color3-500">Nuestro trabajo</h2>
+                            <img src="https://images.unsplash.com/photo-1528301725143-1ba694832e77?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDExfHxraWRzJTIwYW5pbWFsfGVufDB8fHx8MTYzMDQ2NTQwOQ&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=1000&amp;h=650&amp;fit=crop" class="mb-6 rounded-3xl w-full" alt="..." width="1000" height="650"><a href="#" class="bg-color3-500 hover:bg-color3-600 inline-block px-6 py-2 rounded-full text-gray-900">Learn More</a> 
+                        </div>
+                        <div class="lg:w-6/12 mx-auto p-4 w-full"> 
+                            <div class="-mx-4 flex flex-wrap items-center"> 
+                                <div class="px-4 py-6 w-1/2">
+                                    <h3 class="font-bold mb-2 text-4xl text-color3-500 sm:text-6xl">1200+</h3>
+                                    <p>Animals Adopted</p> 
+                                </div>
+                                <div class="px-4 py-6 w-1/2">
+                                    <h3 class="font-bold mb-2 text-4xl text-color3-500 sm:text-6xl">1000+</h3>
+                                    <p>Families United</p> 
+                                </div>
+                                <div class="px-4 py-6 w-1/2">
+                                    <h3 class="font-bold mb-2 text-4xl text-color3-500 sm:text-6xl">20+</h3>
+                                    <p>Active Volunteers</p> 
+                                </div>
+                                <div class="px-4 py-6 w-1/2">
+                                    <h3 class="font-bold mb-2 text-4xl text-color3-500 sm:text-6xl">10K+</h3>
+                                    <p>Animals Helped</p> 
+                                </div>                                 
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                </div>
+            </section>
+        </main>
+        <footer class="bg-black bg-opacity-90 pt-12 text-gray-300"> 
+            <div class="container mx-auto px-4 relative"> 
+                <div class="flex flex-wrap -mx-4"> 
+                    <div class="w-full p-4 xl:w-4/12"> <a href="#" class="font-bold font-serif hover:text-opacity-75 inline-flex items-center leading-none mb-6 text-3xl text-primary-500"> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="2.5em" xml:space="preserve" fill="currentColor" viewBox="0 0 240 240" height="2.5em" class="mr-2">
+                                <g transform="translate(17.704 -9.215)">
+                                    <path d="M92.45 183.38a61.38 61.38 0 00-30.07 15.35 9.84 9.84 0 01-15.9-3.73 61.65 61.65 0 11115.83-.18 9.87 9.87 0 01-16 3.9 61.43 61.43 0 00-30.07-15.35" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></path>
+                                    <circle cx="17.18" cy="17.18" r="17.18" transform="rotate(-22.39 282.115 44.556)" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></circle>
+                                    <circle cx="17.18" cy="17.18" r="17.18" transform="rotate(-22.39 179.693 -83.499)" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></circle>
+                                    <circle cx="17.18" cy="17.18" r="17.18" transform="rotate(-67.61 176.48 -54.394)" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></circle>
+                                    <circle cx="17.18" cy="17.18" r="17.18" transform="rotate(-67.61 119.616 -48.074)" fill="#99cd31" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></circle>
+                                    <circle cx="3.19" cy="3.19" r="3.19" transform="translate(101.16 179.05)" fill="#475f17"></circle>
+                                    <path d="M89.72 137a20.84 20.84 0 00-20.84 20.84v.16" fill="none" stroke="#475f17" stroke-miterlimit="10" stroke-width="12"></path>
+                                    <path d="M15.7 47.82h-2.75v-2.76a3.4 3.4 0 00-6.79 0v2.76H3.4a3.4 3.4 0 000 6.79h2.75v2.76a3.4 3.4 0 006.79 0v-2.76h2.76a3.4 3.4 0 000-6.79zm172.43 9.55h-2.76v-2.76a3.4 3.4 0 00-6.79 0v2.76h-2.76a3.4 3.4 0 000 6.79h2.76v2.76a3.4 3.4 0 006.79 0v-2.76h2.76a3.4 3.4 0 000-6.79zM25.25 203.82H22.5v-2.76a3.4 3.4 0 00-6.79 0v2.76h-2.76a3.4 3.4 0 000 6.79h2.75v2.76a3.4 3.4 0 006.79 0v-2.76h2.76a3.4 3.4 0 000-6.79z" fill="#475f17"></path>
+                                </g>
+                            </svg><span>Happy Paws</span> </a> 
+                        <p class="mb-6 text-sm">                             Duis pharetra venenatis felis, ut tincidunt ipsum consequat nec. Fusce et porttitor libero, eu aliquam nisi. Nam finibus ullamcorper semper. </p>
+                        <div class="mb-6"> <a href="#" class="hover:text-primary-600">+1 234 567-890</a> <br> <a href="#" class="hover:text-primary-600">hello@fantico.com</a> 
+                        </div>
+                        <div class="flex-wrap inline-flex space-x-3"> <a href="#" aria-label="facebook" class="hover:text-primary-600"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                    <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z"/> 
+                                </svg></a> <a href="#" aria-label="twitter" class="hover:text-primary-600"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                    <path d="M22.162 5.656a8.384 8.384 0 0 1-2.402.658A4.196 4.196 0 0 0 21.6 4c-.82.488-1.719.83-2.656 1.015a4.182 4.182 0 0 0-7.126 3.814 11.874 11.874 0 0 1-8.62-4.37 4.168 4.168 0 0 0-.566 2.103c0 1.45.738 2.731 1.86 3.481a4.168 4.168 0 0 1-1.894-.523v.052a4.185 4.185 0 0 0 3.355 4.101 4.21 4.21 0 0 1-1.89.072A4.185 4.185 0 0 0 7.97 16.65a8.394 8.394 0 0 1-6.191 1.732 11.83 11.83 0 0 0 6.41 1.88c7.693 0 11.9-6.373 11.9-11.9 0-.18-.005-.362-.013-.54a8.496 8.496 0 0 0 2.087-2.165z"/> 
+                                </svg></a> <a href="#" aria-label="instagram" class="hover:text-primary-600"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                    <path d="M12 2c2.717 0 3.056.01 4.122.06 1.065.05 1.79.217 2.428.465.66.254 1.216.598 1.772 1.153a4.908 4.908 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428.047 1.066.06 1.405.06 4.122 0 2.717-.01 3.056-.06 4.122-.05 1.065-.218 1.79-.465 2.428a4.883 4.883 0 0 1-1.153 1.772 4.915 4.915 0 0 1-1.772 1.153c-.637.247-1.363.415-2.428.465-1.066.047-1.405.06-4.122.06-2.717 0-3.056-.01-4.122-.06-1.065-.05-1.79-.218-2.428-.465a4.89 4.89 0 0 1-1.772-1.153 4.904 4.904 0 0 1-1.153-1.772c-.248-.637-.415-1.363-.465-2.428C2.013 15.056 2 14.717 2 12c0-2.717.01-3.056.06-4.122.05-1.066.217-1.79.465-2.428a4.88 4.88 0 0 1 1.153-1.772A4.897 4.897 0 0 1 5.45 2.525c.638-.248 1.362-.415 2.428-.465C8.944 2.013 9.283 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6.5-.25a1.25 1.25 0 0 0-2.5 0 1.25 1.25 0 0 0 2.5 0zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/> 
+                                </svg></a>
+                            <a href="#" aria-label="linkedin" class="hover:text-primary-600"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                    <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"/> 
+                                </svg></a>
+                            <a href="#" aria-label="youtube" class="hover:text-primary-600"> <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"> 
+                                    <path d="M21.543 6.498C22 8.28 22 12 22 12s0 3.72-.457 5.502c-.254.985-.997 1.76-1.938 2.022C17.896 20 12 20 12 20s-5.893 0-7.605-.476c-.945-.266-1.687-1.04-1.938-2.022C2 15.72 2 12 2 12s0-3.72.457-5.502c.254-.985.997-1.76 1.938-2.022C6.107 4 12 4 12 4s5.896 0 7.605.476c.945.266 1.687 1.04 1.938 2.022zM10 15.5l6-3.5-6-3.5v7z"/> 
+                                </svg></a> 
+                        </div>                         
+                    </div>                     
+                    <div class="p-4 w-full sm:w-6/12 md:flex-1 md:w-auto"> 
+                        <h2 class="font-bold text-primary-500 text-xl">General</h2>
+                        <hr class="border-primary-500 my-6 opacity-25 w-3/12"> 
+                        <ul> 
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">FAQ</a> 
+                            </li>
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">News</a> 
+                            </li>                             
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">Careers</a> 
+                            </li>
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">Contact Us</a> 
+                            </li>
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">Contact Us</a> 
+                            </li>                             
+                        </ul>                         
+                    </div>                     
+                    <div class="p-4 w-full sm:w-6/12 md:flex-1 md:w-auto"> 
+                        <h2 class="font-bold text-primary-500 text-xl">Links</h2>
+                        <hr class="border-primary-500 my-6 opacity-25 w-3/12"> 
+                        <ul> 
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">Our Herd</a> 
+                            </li>                             
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">Services</a> 
+                            </li>                             
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">Donate</a> 
+                            </li>                             
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">Volunteer</a> 
+                            </li>                             
+                            <li class="mb-4"> <a href="#" class="hover:text-primary-600">Get Involved</a> 
+                            </li>                             
+                        </ul>                         
+                    </div>                     
+                    <div class="p-4 w-full md:w-5/12 xl:w-4/12"> 
+                        <h2 class="font-bold text-primary-500 text-xl">Gallery</h2>
+                        <hr class="border-primary-500 my-6 opacity-25 w-3/12"> 
+                        <div class="-mx-2 flex flex-wrap items-center"> 
+                            <div class="p-2 w-1/2 sm:w-4/12">
+                                <a href="" class="block hover:opacity-75 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDF8fHBldHxlbnwwfHx8fDE2MzA0NjI1MjM&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=300&amp;h=250&amp;fit=crop" width="300" height="250" class="w-full"></a>
+                            </div>
+                            <div class="p-2 w-1/2 sm:w-4/12">
+                                <a href="" class="block hover:opacity-75 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1491485880348-85d48a9e5312?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDE1fHxjYXR8ZW58MHx8fHwxNjMwNDY3NzE4&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=300&amp;h=250&amp;fit=crop" width="300" height="250" class="w-full"></a>
+                            </div>
+                            <div class="p-2 w-1/2 sm:w-4/12">
+                                <a href="" class="block hover:opacity-75 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDIzfHxwZXR8ZW58MHx8fHwxNjMwNDYyNTIz&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=300&amp;h=250&amp;fit=crop" width="300" height="250" class="w-full"></a>
+                            </div>
+                            <div class="p-2 w-1/2 sm:w-4/12">
+                                <a href="" class="block hover:opacity-75 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDI3fHxjYXR8ZW58MHx8fHwxNjMwNDY3NzE4&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=300&amp;h=250&amp;fit=crop" width="300" height="250" class="w-full"></a>
+                            </div>
+                            <div class="p-2 w-1/2 sm:w-4/12">
+                                <a href="" class="block hover:opacity-75 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1524511751214-b0a384dd9afe?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDI4fHxwZXR8ZW58MHx8fHwxNjMwNDYyNTIz&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=300&amp;h=250&amp;fit=crop" width="300" height="250" class="w-full"></a>
+                            </div>
+                            <div class="p-2 w-1/2 sm:w-4/12">
+                                <a href="" class="block hover:opacity-75 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1591561582301-7ce6588cc286?ixid=MnwyMDkyMnwwfDF8c2VhcmNofDMwfHxyYWJiaXR8ZW58MHx8fHwxNjMwNDY3NjUw&amp;ixlib=rb-1.2.1q=85&amp;fm=jpg&amp;crop=faces&amp;cs=srgb&amp;w=300&amp;h=250&amp;fit=crop" width="300" height="250" class="w-full"></a>
+                            </div>                             
+                        </div>                         
+                    </div>                     
+                </div>                 
+                <div class="py-4 text-center"> 
+                    <hr class="mb-4 opacity-25"> 
+                    <p class="py-1 text-sm">&copy; 2002 - 2021. All Rights Reserved - Company Name</p> 
+                </div>                 
+            </div>             
+        </footer>
+        <script src="pgia/lib/pgia.js"></script>
+    </body>
+</html>
