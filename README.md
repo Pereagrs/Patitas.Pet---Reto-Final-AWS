@@ -30,12 +30,28 @@
   - `pgClass`, `pgDom`, `pgCall`: gestión del DOM y clases CSS.
 - Aplicación de presets de animaciones como `fadeInUp`, `bounce`, `zoomIn`, etc.
 - Adaptación automática para elementos con `data-pg-ia`.
+## Configuración PWA (`PWA Enlaza archivos en el index.html`)
+
+Este fragmento HTML activa las funcionalidades de **Progressive Web App (PWA)** en el sitio web, permitiendo una experiencia más cercana a una app móvil, incluso sin conexión. La eliminación se realiza solo si el `animal_id` existe en el registro mediante la expresión condicional `attribute_exists(animal_id)`. El flujo de la función es el siguiente:
+
+### Archivos involucrados
+
+- `manifest.json`: Define los metadatos de la PWA.
+  - Nombre de la aplicación.
+  - Iconos para diferentes resoluciones.
+  - Color de fondo y tema.
+  - Pantalla inicial y comportamiento al abrirse.
+- `service-worker.js`: Script que gestiona el caché de los recursos y habilita la funcionalidad offline.
+  - Precarga archivos HTML, CSS, JS y medios.
+  - Actualiza dinámicamente los recursos del sitio.
+  - Maneja eventos como instalación y activación.
+
 ## Configuración de acceso S3 (`Politica json solo lectura.json`)
 Este archivo contiene una política de control de acceso para habilitar la lectura pública de los archivos estáticos del proyecto alojados en **Amazon S3**. Descripción general:
 -Permitir que cualquier usuario (Principal: `"*"`) pueda acceder a los objetos almacenados en el bucket S3 `patitas-pet-frontend`.
 -Acción permitida: `s3:GetObject` — habilita exclusivamente la lectura de archivos, sin autorización para escritura o eliminación.
 -Recurso afectado: Todos los archivos dentro del bucket `patitas-pet-frontend`.
-## Función Lambda: Crear Animal (`Funcio crear animal.py`)
+## Función Lambda: Crear Animal (`Funcion crear animal.py`)
 Esta función Lambda escrita en **Python** permite registrar nuevos animales en la base de datos de **Amazon DynamoDB**, vinculándolos a una protectora específica. Realiza lo siguiente:
 
 - **Recibe** datos JSON desde una petición HTTP (API Gateway).
@@ -65,21 +81,54 @@ El animal que se inserta en la base de datos incluye:
 ### Validaciones y errores
 - Si faltan datos obligatorios, se devuelve un error 400 con mensaje detallado.
 - Si ocurre algún fallo interno, se responde con estado 500 y mensaje genérico.
-## Configuración PWA (`PWA Enlaza archivos en el index.html`)
+## Función Lambda: Eliminar Animal (`Funcion Borrar animal.py`)
+La función procesa una solicitud HTTP (evento API Gateway) con un cuerpo JSON que contiene dos campos obligatorios: `protectora_id` y `animal_id`. Si ambos están presentes, se intenta eliminar el ítem correspondiente en la tabla `Animales`.
 
-Este fragmento HTML activa las funcionalidades de **Progressive Web App (PWA)** en el sitio web, permitiendo una experiencia más cercana a una app móvil, incluso sin conexión.
+- **Parseo del cuerpo** recibido en formato JSON.
+-    **Validación** de campos obligatorios (`protectora_id`, `animal_id`).
+-    **Eliminación del ítem** en la tabla DynamoDB si existe.
+-   **Respuesta JSON** con código 200 si se elimina correctamente.
+-    **Manejo de errores** con código 400 (faltan campos) o 500 (error interno).
+## Función Lambda: Editar Animal (`Funcion Editar animal.py`)
+Este script en Python implementa una función AWS Lambda para actualizar los detalles de un animal registrado en una tabla DynamoDB, ideal para sistemas de gestión de protectoras de animales. El flujo de trabajo es el siguiente:
+- **Recepción del evento** La función recibe un evento HTTP (normalmente vía API Gateway) con un cuerpo JSON que contiene el `protectora_id`, `animal_id` y los campos a actualizar.
+- **Parseo del cuerpo JSON** El contenido del `event['body']` se transforma en un diccionario de Python usando `json.loads()`.
+- **Validación de campos obligatorios** Se verifica que existan `protectora_id` y `animal_id`.
+    
+    -   Si alguno falta ➝ se retorna `400 Bad Request` con un mensaje de error.
+        
+- **Preparación de expresión de actualización**: Se inicia con la actualización del campo `actualizado_en` con la hora actual en formato ISO. Se recorren los campos potencialmente actualizables (`nombre`, `especie`, `edad`, `tamaño`, `estado`, `foto_url`, `descripcion`) y se añaden dinámicamente si están presentes en el cuerpo.
+        
+- **Validación de campos a actualizar**: Si **ninguno** de los campos actualizables fue proporcionado ➝ se retorna `400 Bad Request`.
+- **Actualización del ítem en DynamoDB**: Se ejecuta el método `update_item()`.
+                
+	-	**Respuesta exitosa**: Si todo va bien, retorna `200 OK` con el mensaje: `"Animal actualizado correctamente."`
+        
+	- **Manejo de errores** : Si ocurre una excepción durante el proceso ➝ se captura y se responde con `500 Internal Server Error`.
+ 
+## Función Lambda: UploadURL (`Funcion generarUploadURL.py`)
+La función  recibe un JSON vía API Gateway que incluye el tipo de contenido (ej. `image/jpeg`) y devuelve:
 
-### Archivos involucrados
+-   Una **URL prefirmada** para subir la imagen.
+-   Una **URL pública** donde estará accesible la imagen una vez subida.
 
-- `manifest.json`: Define los metadatos de la PWA.
-  - Nombre de la aplicación.
-  - Iconos para diferentes resoluciones.
-  - Color de fondo y tema.
-  - Pantalla inicial y comportamiento al abrirse.
-- `service-worker.js`: Script que gestiona el caché de los recursos y habilita la funcionalidad offline.
-  - Precarga archivos HTML, CSS, JS y medios.
-  - Actualiza dinámicamente los recursos del sitio.
-  - Maneja eventos como instalación y activación.
+Flujo de trabajo:
+- **Parseo del cuerpo JSON**: Se obtiene el tipo de contenido (content_type) y se valida que sea una imagen (image/*).
+
+- **Validación del tipo de archivo**: Si no es imagen ➝ responde 400 Bad Request.
+
+- **Generación de nombre único de archivo**: Se crea un nombre con UUID y extensión correspondiente, en la carpeta animales/.
+
+- **Generación de URL prefirmada**: Se usa generate_presigned_url con validez de 1 hora (ExpiresIn: 3600).
+
+- **Respuesta con URLs**:
+
+	- **upload_url**: para subir la imagen.
+
+	- **file_url**: la URL pública donde estará la imagen.
+
+- **Manejo de errores**: Si ocurre algún problema, responde con 500 Internal Server Error.
+
 
 ## Tecnologías Usadas  
 
