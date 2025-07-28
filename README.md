@@ -11,6 +11,11 @@
   - **Galería**: tarjetas de mascotas con nombres, descripciones y botones.
   - **Estadísticas**: número de animales adoptados, voluntarios, etc.
   - **Footer**: enlaces útiles y una galería secundaria.
+## HTML de Error 404 personalizada (`404.html`)
+Este archivo HTML muestra una página de error **404 - Página no encontrada**, diseñada para mejorar la experiencia del usuario cuando intenta acceder a una URL inexistente en la aplicación.
+-   **Diseño responsive** y minimalista. 
+-   **Estilo CSS embebido** para facilitar su uso sin archivos externos.
+-   **Compatible** con la mayoría de navegadores modernos.
 ## CSS (`style.txt`)
 - Incluye `tailwind.css` con extensiones personalizadas.
 - Tipografía: **Space Grotesk** vía Google Fonts.
@@ -46,11 +51,6 @@ Este fragmento HTML activa las funcionalidades de **Progressive Web App (PWA)** 
   - Actualiza dinámicamente los recursos del sitio.
   - Maneja eventos como instalación y activación.
 
-## Configuración de acceso S3 (`Politica json solo lectura.json`)
-Este archivo contiene una política de control de acceso para habilitar la lectura pública de los archivos estáticos del proyecto alojados en **Amazon S3**. Descripción general:
--Permitir que cualquier usuario (Principal: `"*"`) pueda acceder a los objetos almacenados en el bucket S3 `patitas-pet-frontend`.
--Acción permitida: `s3:GetObject` — habilita exclusivamente la lectura de archivos, sin autorización para escritura o eliminación.
--Recurso afectado: Todos los archivos dentro del bucket `patitas-pet-frontend`.
 ## Función Lambda: Crear Animal (`Funcion crear animal.py`)
 Esta función Lambda escrita en **Python** permite registrar nuevos animales en la base de datos de **Amazon DynamoDB**, vinculándolos a una protectora específica. Realiza lo siguiente:
 
@@ -128,6 +128,16 @@ Flujo de trabajo:
 	- **file_url**: la URL pública donde estará la imagen.
 
 - **Manejo de errores**: Si ocurre algún problema, responde con 500 Internal Server Error.
+
+## Política de configuración de acceso S3 (`Politica json solo lectura.json`)
+Este archivo contiene una política de control de acceso para habilitar la lectura pública de los archivos estáticos del proyecto alojados en **Amazon S3**. Descripción general:
+-Permitir que cualquier usuario (Principal: `"*"`) pueda acceder a los objetos almacenados en el bucket S3 `patitas-pet-frontend`.
+-Acción permitida: `s3:GetObject` — habilita exclusivamente la lectura de archivos, sin autorización para escritura o eliminación.
+-Recurso afectado: Todos los archivos dentro del bucket `patitas-pet-frontend`.
+## Política de subida de imágenes a S3 desde Lambda (`Política de bucket s3PutObject.py`)
+Este archivo JSON define una política de permisos que permite a una función Lambda asumir el rol LabRole y subir archivos al bucket S3 patitas-imagenes.
+
+Esta política debe aplicarse a la configuración de políticas del bucket S3 `patitas-imagenes`, permitiendo así que funciones Lambda asociadas al rol `LabRole` puedan subir imágenes, por ejemplo, como parte de un flujo de carga de imágenes en una aplicación como **Patitas.Pet**.
 
 
 ## Tecnologías Usadas  
