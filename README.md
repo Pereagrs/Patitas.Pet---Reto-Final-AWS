@@ -16,7 +16,7 @@ Este archivo HTML muestra una página de error **404 - Página no encontrada**, 
 -   **Diseño responsive** y minimalista. 
 -   **Estilo CSS embebido** para facilitar su uso sin archivos externos.
 -   **Compatible** con la mayoría de navegadores modernos.
-## CSS (`style.txt`)
+## CSS (`style.css`)
 - Incluye `tailwind.css` con extensiones personalizadas.
 - Tipografía: **Space Grotesk** vía Google Fonts.
 - Modificadores de Tailwind extendidos, con clases personalizadas como:
@@ -26,7 +26,7 @@ Este archivo HTML muestra una página de error **404 - Página no encontrada**, 
 - Compatibilidad con elementos interactivos (`hover`, `focus`, `disabled`, etc.)
 - Clases definidas para:
   - Espaciado, tamaño, color, borde, display, tipografía, efectos responsivos y opacidad.
-## JavaScript (`script.txt`)
+## JavaScript (`script.js`)
 - Carga el **Pinegrow Interactions Runtime 2.14**.
 - Integra animaciones con la librería **GSAP**.
 - Control de eventos:
