@@ -19,10 +19,10 @@ $topicArn = (Get-SNSTopicList -Region $region).Topics | Where-Object { $_.TopicA
 
 if (-not $topicArn) {
     $topicArn = (New-SNSTopic -Name $snsTopicName -Region $region).TopicArn
-    Write-Output "✅ Tema SNS '$snsTopicName' creado: $topicArn"
-    Write-Output "📧 Enviando subscripción a $email..."
+    Write-Output "Tema SNS '$snsTopicName' creado: $topicArn"
+    Write-Output "Enviando subscripción a $email..."
     New-SNSSubscription -TopicArn $topicArn -Protocol email -Endpoint $email -Region $region
-    Write-Output "⚠️ No olvides confirmar la suscripción por email"
+    Write-Output "No olvides confirmar la suscripción por email"
 } else {
     Write-Output "🔁 Tema SNS '$snsTopicName' ya existe: $topicArn"
 }
