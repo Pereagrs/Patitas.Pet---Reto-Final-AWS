@@ -64,6 +64,40 @@
     </p>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/amazon-cognito-identity-js@6.0.6/dist/amazon-cognito-identity.min.js"></script>
+<script>
+  // Configura tu User Pool (reemplaza los valores)
+  const poolData = {
+    UserPoolId: 'us-east-1_XXXXXXXXX', // ← Tu User Pool ID real
+    ClientId: 'XXXXXXXXXXXXXXXXXXXXXX' // ← Tu App Client ID real
+  };
+
+  const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+  // Captura datos del formulario y registra al usuario
+  document.getElementById('registro-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const attributeList = [
+      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: nombre }),
+      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email })
+    ];
+
+    userPool.signUp(email, password, attributeList, null, function(err, result) {
+      if (err) {
+        alert('❌ Error: ' + err.message || JSON.stringify(err));
+        return;
+      }
+
+      const cognitoUser = result.user;
+      alert('✅ Usuario creado con éxito: ' + cognitoUser.getUsername());
+    });
+  });
+</script>
+
 
 </body>
 </html>
