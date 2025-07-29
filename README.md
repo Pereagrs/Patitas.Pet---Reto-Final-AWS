@@ -16,7 +16,7 @@ Este archivo HTML muestra una página de error **404 - Página no encontrada**, 
 -   **Diseño responsive** y minimalista. 
 -   **Estilo CSS embebido** para facilitar su uso sin archivos externos.
 -   **Compatible** con la mayoría de navegadores modernos.
-## CSS (`style.css`)
+## CSS (`style.txt`)
 - Incluye `tailwind.css` con extensiones personalizadas.
 - Tipografía: **Space Grotesk** vía Google Fonts.
 - Modificadores de Tailwind extendidos, con clases personalizadas como:
@@ -26,7 +26,7 @@ Este archivo HTML muestra una página de error **404 - Página no encontrada**, 
 - Compatibilidad con elementos interactivos (`hover`, `focus`, `disabled`, etc.)
 - Clases definidas para:
   - Espaciado, tamaño, color, borde, display, tipografía, efectos responsivos y opacidad.
-## JavaScript (`script.js`)
+## JavaScript (`script.txt`)
 - Carga el **Pinegrow Interactions Runtime 2.14**.
 - Integra animaciones con la librería **GSAP**.
 - Control de eventos:
@@ -128,6 +128,18 @@ Flujo de trabajo:
 	- **file_url**: la URL pública donde estará la imagen.
 
 - **Manejo de errores**: Si ocurre algún problema, responde con 500 Internal Server Error.
+## Función Lambda: Enviar correos con Amazon SES (`Funcion Enviar Correo.py`)
+Este código implementa una función AWS Lambda que recibe datos desde un evento HTTP (API Gateway) y envía un correo electrónico utilizando Amazon Simple Email Service (SES). Funcionalidad:
+
+-Procesa una petición HTTP con un body en formato JSON que contiene:
+	
+ - nombre: nombre del remitente.
+ - email: correo del remitente.
+ - mensaje: texto del mensaje.
+ - animal: nombre del animal sobre el que se consulta.
+
+-Envía un correo electrónico a una dirección predefinida usando SES.
+-Devuelve una respuesta JSON indicando si el envío fue exitoso o si ocurrió un error.
 
 ## Política de configuración de acceso S3 (`Politica json solo lectura.json`)
 Este archivo contiene una política de control de acceso para habilitar la lectura pública de los archivos estáticos del proyecto alojados en **Amazon S3**. Descripción general:
@@ -139,13 +151,34 @@ Este archivo JSON define una política de permisos que permite a una función La
 
 Esta política debe aplicarse a la configuración de políticas del bucket S3 `patitas-imagenes`, permitiendo así que funciones Lambda asociadas al rol `LabRole` puedan subir imágenes, por ejemplo, como parte de un flujo de carga de imágenes en una aplicación como **Patitas.Pet**.
 
+## Política de confianza para un rol de AWS IAM (`Política de confianza Rol IAM.json`)
+Define una política de confianza para un rol de AWS IAM, permitiendo que usuarios autenticados de un Identity Pool de Amazon Cognito asuman el rol mediante STS (Security Token Service). Esta política garantiza que únicamente los usuarios autenticados a través de Cognito puedan obtener credenciales temporales de IAM para acceder a los recursos definidos por el rol.
+## Política IAM: Acceso a S3 (`Politica acceso al bucket S3 rol IAM.json`)
+Esta política concede a un usuario, rol o servicio permisos específicos sobre el bucket `patitas-imagenes`. Se asigna esta política a roles de Lambda u otros servicios que necesiten leer, listar y escribir imágenes en el bucket de S3.
+## Política IAM: Permiso para enviar correos con Amazon SES (`Politica permisos SES a la Lambda.json`)
+Esta política otorga a la entidad (usuario, grupo o rol) el permiso para enviar correos electrónicos utilizando **Amazon Simple Email Service (SES)**. Se asigna esta política a un rol o usuario que necesite enviar correos electrónicos mediante Amazon SES.
+## Política de permisos S3 para exportación de DynamoDB (`Politica PatitasDynamoDBBackupAccess.json`)
+Esta política de bucket de Amazon S3 permite que el rol DynamoDBExportRole tenga acceso al bucket patitas-backups-dynamo para exportar datos de DynamoDB. 
+Permisos otorgados:
 
-## Tecnologías Usadas  
+ - s3:PutObject → Subir objetos al bucket.
+ - s3:GetObject → Leer objetos del bucket.
+ - s3:ListBucket → Listar el contenido del bucket
 
+Recursos:
 
-| Tecnología           | Propósito                         |
-|----------------------|-----------------------------------|
-| Tailwind CSS         | Estilos rápidos y modernos        |
-| GSAP + ScrollTrigger | Animaciones y transiciones        |
-| Pinegrow Interactions| Configuración visual de efectos   |
-| HTML5 / CSS3 / JS    | Estructura y funcionalidad base   |
+ - Bucket: arn:aws:s3:::patitas-backups-dynamo
+ - Objetos del bucket: arn:aws:s3:::patitas-backups-dynamo/*
+
+Con esta configuración, el rol autorizado puede realizar exportaciones de tablas DynamoDB directamente al bucket especificado.
+## Script para creación de alarmas en AWS CloudWatch para funciones Lambda (`Script creación alarmas AWS CloudWatch para funciones Lambda.ps1`)
+Este script de PowerShell crea alarmas de CloudWatch para funciones AWS Lambda y configura un tema de SNS para recibir notificaciones por correo electrónico cuando se detecten errores.
+
+Funcionalidades
+-Crea automáticamente un tema SNS si no existe.
+-Suscribe un correo electrónico al tema SNS para recibir alertas.
+-Configura alarmas de CloudWatch para múltiples funciones Lambda.
+-Cada alarma se activa si se detecta al menos 1 error en el periodo configurado.
+
+Es necesario confirmar la suscripción por email para comenzar a recibir alertas.
+Requiere AWS Tools for PowerShell v4 o superior.
