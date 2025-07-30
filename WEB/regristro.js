@@ -1,30 +1,32 @@
-document.getElementById('registro-form').addEventListener('submit', async function (e) {
+document.getElementById('registro-form').addEventListener('submit', function (e) {
   e.preventDefault();
 
-  // Captura valores del formulario
   const nombre = document.getElementById('nombre').value;
   const correo = document.getElementById('email').value;
   const contrasena = document.getElementById('password').value;
 
-  const formData = new FormData();
-  formData.append('nombre', nombre);
-  formData.append('email', correo);
-  formData.append('password', contrasena);
+  // Configuración de tu User Pool
+  const poolData = {
+    UserPoolId: 'us-east-1_0wumfD3lJ', // tu User Pool ID
+    ClientId: '7c4ge9h84gsblv3ossvt75snio' // tu App Client ID
+  };
 
-  try {
-    const response = await fetch('/registro', {
-      method: 'POST',
-      body: formData
-    });
+  const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-    const resultado = await response.json();
-    if (response.ok) {
-      alert('✅ ' + resultado.mensaje);
-      window.location.href = 'login.html';
-    } else {
-      alert('❌ ' + resultado.error);
+  // Atributos del usuario
+  const attributeList = [
+    new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: nombre }),
+    new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: correo })
+  ];
+
+  // Registro en Cognito
+  userPool.signUp(correo, contrasena, attributeList, null, function (err, result) {
+    if (err) {
+      alert('❌ Error: ' + err.message || JSON.stringify(err));
+      return;
     }
-  } catch (error) {
-    alert('💥 Error de red: ' + error.message);
-  }
+
+    alert('✅ Registro exitoso. Revisa tu email para confirmar la cuenta.');
+    window.location.href = 'login.html';
+  });
 });
