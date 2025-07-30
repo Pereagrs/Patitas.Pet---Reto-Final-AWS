@@ -1,103 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Registro centrado - prueba</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="registro.js"></script>
-
-<style>
-  body {
-    background-image: url('https://images.unsplash.com/photo-1574158622682-e40e69881006?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-    background-size: cover;
-    background-position: center;
-  }
-  .glass {
-    backdrop-filter: blur(8px);
-    background-color: rgba(255 255 255 / 0.85);
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 25px rgb(0 0 0 / 0.2);
-    padding: 2rem;
-    max-width: 32rem;
-    width: 90vw;
-    margin: auto;
-    animation: fadeIn 0.8s ease-in-out;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de Usuario</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex items-center justify-center font-sans text-gray-700">
+<body>
 
-  <div class="glass text-center flex flex-col items-center">
-    <h1 class="text-4xl font-serif font-bold text-blue-600 mb-2">¡Regístrate! 🐾</h1>
-    <p class="text-sm mb-6 text-gray-600">Crea tu cuenta y forma parte de la comunidad Patitas.Pet.</p>
+  <form id="registro-form">
+    <h2>Crear cuenta</h2>
+    <input type="text" id="nombre" name="nombre" placeholder="Nombre completo" required />
+    <input type="email" id="email" name="email" placeholder="Correo electrónico" required />
+    <input type="password" id="password" name="password" placeholder="Contraseña" required />
+    <button type="submit">Registrarse</button>
+  </form>
 
-    <form id="registro-form" class="space-y-4 w-full flex flex-col items-center">
-      <div class="w-3/4">
-        <label for="nombre" class="block text-sm font-medium text-center">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required
-          class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-600 text-center" />
-      </div>
-      <div class="w-3/4">
-        <label for="email" class="block text-sm font-medium text-center">Correo electrónico</label>
-        <input type="email" id="email" name="email" required
-          class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-600 text-center" />
-      </div>
-      <div class="w-3/4">
-        <label for="password" class="block text-sm font-medium text-center">Contraseña</label>
-        <input type="password" id="password" name="password" required
-          class="mt-1 w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-600 text-center" />
-      </div>
-      <button type="submit"
-        class="w-3/4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full transition">
-        Crear cuenta
-      </button>
-    </form>
+  <!-- Amazon Cognito SDK -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/amazon-cognito-identity-js/6.2.0/amazon-cognito-identity.min.js"></script>
 
-    <p class="mt-6 text-sm">
-      ¿Ya tienes cuenta?
-      <a href="login.html" class="text-blue-600 hover:underline font-semibold">Inicia sesión aquí</a>
-    </p>
-  </div>
-<script src="https://cdn.jsdelivr.net/npm/amazon-cognito-identity-js@6.0.6/dist/amazon-cognito-identity.min.js"></script>
-<script>
-  // Configura tu User Pool (reemplaza los valores)
-  const poolData = {
-    UserPoolId: 'us-east-1_XXXXXXXXX', // ← Tu User Pool ID real
-    ClientId: 'XXXXXXXXXXXXXXXXXXXXXX' // ← Tu App Client ID real
-  };
+  <!-- Script de registro embebido -->
+  <script>
+    document.getElementById('registro-form').addEventListener('submit', function (e) {
+      e.preventDefault();
 
-  const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+      const nombre = document.getElementById('nombre').value;
+      const correo = document.getElementById('email').value;
+      const contrasena = document.getElementById('password').value;
 
-  // Captura datos del formulario y registra al usuario
-  document.getElementById('registro-form').addEventListener('submit', function(e) {
-    e.preventDefault();
+      const poolData = {
+        UserPoolId: 'us-east-1_0wumfD3lJ',
+        ClientId: '7c4ge9h84gsblv3ossvt75snio'
+      };
 
-    const nombre = document.getElementById('nombre').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+      const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-    const attributeList = [
-      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: nombre }),
-      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email })
-    ];
+      const atributoEmail = new AmazonCognitoIdentity.CognitoUserAttribute({
+        Name: 'email',
+        Value: correo
+      });
 
-    userPool.signUp(email, password, attributeList, null, function(err, result) {
-      if (err) {
-        alert('❌ Error: ' + err.message || JSON.stringify(err));
-        return;
-      }
+      const atributoNombre = new AmazonCognitoIdentity.CognitoUserAttribute({
+        Name: 'name',
+        Value: nombre
+      });
 
-      const cognitoUser = result.user;
-      alert('✅ Usuario creado con éxito: ' + cognitoUser.getUsername());
+      const attributeList = [atributoEmail, atributoNombre];
+
+      userPool.signUp(correo, contrasena, attributeList, null, function (err, result) {
+        if (err) {
+          console.error('Error en signUp:', err);
+          alert('❌ Error: ' + (err.message || JSON.stringify(err)));
+          return;
+        }
+
+        const cognitoUser = result.user;
+        alert('✅ Usuario creado con éxito: ' + cognitoUser.getUsername());
+
+        // Redirigir al login
+        window.location.href = 'login.html';
+      });
     });
-  });
-</script>
-
-
+  </script>
 </body>
 </html>

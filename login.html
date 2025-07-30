@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,20 +33,6 @@
       animation: fadeIn 0.8s ease-in-out;
     }
 
-    .glass form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .glass input {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      text-align: center;
-    }
-
     .glass button {
       width: 100%;
       background: #3b82f6;
@@ -73,15 +60,7 @@
     <h1 class="text-4xl font-bold mb-2">¡Bienvenido! 🐾</h1>
     <p class="text-sm mb-6">Tu refugio para encontrar compañeros de vida está a un clic.</p>
 
-    <form action="#" method="POST">
-      <div>
-        <label for="email" class="block text-sm font-medium">Correo electrónico</label>
-        <input type="email" id="email" name="email" required />
-      </div>
-      <div>
-        <label for="password" class="block text-sm font-medium">Contraseña</label>
-        <input type="password" id="password" name="password" required />
-      </div>
+    <form action="/login" method="GET">
       <button type="submit">Iniciar Sesión</button>
     </form>
 
