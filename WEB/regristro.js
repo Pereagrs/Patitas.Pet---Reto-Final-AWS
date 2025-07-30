@@ -1,46 +1,30 @@
-// Referencia los campos del formulario
-document.getElementById('signupForm').addEventListener('submit', function (e) {
-  e.preventDefault(); // Evita que se recargue la página
+document.getElementById('registro-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-  // Recupera valores del formulario
+  // Captura valores del formulario
   const nombre = document.getElementById('nombre').value;
-  const correo = document.getElementById('correo').value;
-  const contrasena = document.getElementById('contrasena').value;
+  const correo = document.getElementById('email').value;
+  const contrasena = document.getElementById('password').value;
 
-  // Configuración del User Pool
-  const poolData = {
-    UserPoolId: 'us-east-1_0wumfD3lJ', // ← tu UserPoolId
-    ClientId: '7c4ge9h84gsblv3ossvt75snio' // ← tu ClientId
-  };
+  const formData = new FormData();
+  formData.append('nombre', nombre);
+  formData.append('email', correo);
+  formData.append('password', contrasena);
 
-  const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+  try {
+    const response = await fetch('/registro', {
+      method: 'POST',
+      body: formData
+    });
 
-  // Atributos personalizados del usuario
-  const attributeList = [];
-
-  const dataEmail = {
-    Name: 'email',
-    Value: correo
-  };
-  const dataNombre = {
-    Name: 'name',
-    Value: nombre
-  };
-
-  const atributoEmail = new AmazonCognitoIdentity.CognitoUserAttribute(dataEmail);
-  const atributoNombre = new AmazonCognitoIdentity.CognitoUserAttribute(dataNombre);
-
-  attributeList.push(atributoEmail);
-  attributeList.push(atributoNombre);
-
-  // Registrar usuario en Cognito
-  userPool.signUp(correo, contrasena, attributeList, null, function (err, result) {
-    if (err) {
-      alert('❌ Error: ' + err.message || JSON.stringify(err));
-      return;
+    const resultado = await response.json();
+    if (response.ok) {
+      alert('✅ ' + resultado.mensaje);
+      window.location.href = 'login.html';
+    } else {
+      alert('❌ ' + resultado.error);
     }
-
-    const cognitoUser = result.user;
-    alert('✅ Registro exitoso. Usuario: ' + cognitoUser.getUsername());
-  });
+  } catch (error) {
+    alert('💥 Error de red: ' + error.message);
+  }
 });
