@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patitas.Pet - Añadir Animal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-color: #f9fafb;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #a5d6a7;
+      padding: 0.8rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar h1 {
+      margin: 0;
+      font-size: 1.7rem;
+      color: #2e7d32;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar h1::before {
+      content: "";
+      display: inline-block;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/616/616408.png');
+      background-size: cover;
+      width: 28px;
+      height: 28px;
+      margin-right: 0.6rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #388e3c;
+      font-weight: bold;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .profile-card {
+      background-color: white;
+      max-width: 800px;
+      margin: 2rem auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      padding: 2rem;
+    }
+
+    .header-info {
+      text-align: center;
+    }
+
+    .header-info h2 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+      color: #388e3c;
+    }
+
+    .header-info p {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .detail {
+      background-color: #f1f8e9;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .detail h3 {
+      margin-bottom: 0.4rem;
+      font-size: 1rem;
+      color: #2e7d32;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .edit-button {
+      text-align: right;
+      margin-top: 2rem;
+    }
+
+    .edit-button button {
+      background-color: #388e3c;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .edit-button button:hover {
+      background-color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <h1>Patitas.Pet</h1>
+    <div class="nav-links">
+      <a href="#">Inicio</a>
+      <a href="#">Perfil</a>
+      <a href="#">Añadir</a>
+      <a href="#">📬</a>
+    </div>
+  </div>
+
+  <div class="profile-card">
+    <div class="header-info">
+      <h2>Nuevo animal 🐾</h2>
+      <p>Rellena los datos para que otros puedan adoptarlo</p>
+    </div>
+
+    <div class="details">
+      <div class="detail">
+        <h3>Nombre</h3>
+        <input type="text" id="nombre" placeholder="Ej. Nala" />
+      </div>
+      <div class="detail">
+        <h3>Edad</h3>
+        <input type="text" id="edad" placeholder="Ej. 2 años" />
+      </div>
+      <div class="detail">
+        <h3>Tamaño</h3>
+        <input type="text" id="tamano" placeholder="Ej. Mediano" />
+      </div>
+      <div class="detail">
+        <h3>Descripción</h3>
+        <textarea id="descripcion" placeholder="Muy juguetona y sociable..."></textarea>
+      </div>
+      <div class="detail">
+        <h3>📸 Imagen</h3>
+        <input type="file" accept="image/*" onchange="subirImagenAS3(event)" />
+      </div>
+    </div>
+
+    <div class="edit-button">
+      <button onclick="guardarAnimal()">Guardar ficha ✅</button>
+    </div>
+  </div>
+
+  <script>
+    let nombreImagenSubida = '';
+
+    async function subirImagenAS3(event) {
+      const archivo = event.target.files[0];
+      const nombreArchivo = archivo.name;
+
+      try {
+        const response = await fetch(`https://api.patitas.pet/prod/upload-url?nombreArchivo=${nombreArchivo}`);
+        const { uploadUrl } = await response.json();
+
+        await fetch(uploadUrl, {
+          method: 'PUT',
+          headers: { 'Content-Type': archivo.type },
+          body: archivo
+        });
+
+        nombreImagenSubida = nombreArchivo;
+        alert('✅ Imagen subida correctamente');
+
+      } catch (err) {
+        console.error('Error al subir imagen', err);
+        alert('❌ Hubo un problema al subir la imagen');
+      }
+    }
+
+    function guardarAnimal() {
+      const nombre = document.getElementById('nombre').value;
+      const edad = document.getElementById('edad').value;
+      const tamano = document.getElementById('tamano').value;
+      const descripcion = document.getElementById('descripcion').value;
+
+      if (!nombre || !edad || !tamano || !descripcion || !nombreImagenSubida) {
+        alert('⚠️ Por favor, completa todos los campos y sube una imagen');
+        return;
+      }
+
+      // Aquí podrías hacer una petición para guardar en DynamoDB u otra base de datos
+      console.log({
+        nombre,
+        edad,
+        tamano,
+        descripcion,
+        imagen: nombreImagenSubida
+      });
+
+      alert(`🎉 Animal "${nombre}" guardado con éxito`);
+    }
+  </script>
+</body>
+</html>
