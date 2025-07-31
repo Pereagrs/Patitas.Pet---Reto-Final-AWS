@@ -124,7 +124,6 @@
             background-color: #388e3c;
         }
 
-
         @media (max-width: 768px) {
             .container {
                 grid-template-columns: 1fr;
@@ -140,59 +139,58 @@
 
 <body>
 
-    <header>
-        <h1>Patitas.Pet</h1>
-        <a class="volver" href="index.html">← Volver</a>
-    </header>
+<header>
+    <h1>Patitas.Pet</h1>
+    <a class="volver" href="index.html">← Volver</a>
+</header>
 
-    <div class="gallery">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBeSbuBqNFW6kkOmUhBv0KkUK77yid24Di8Q&s" alt="Foto Luna 1">
-        <img src="https://www.escuelacaninamaya.com/images/xboxer.jpg.pagespeed.ic.Tt_reX5QUy.jpg" alt="Foto Luna 2">
-        <img src="https://d3ciu7npf6axud.cloudfront.net/09b7257c-4436-4f96-ac0d-38806947edab/images/breeds/Boxer.webp" alt="Foto Luna 3">
+<div class="gallery">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBeSbuBqNFW6kkOmUhBv0KkUK77yid24Di8Q&s" alt="Foto Truski y Patruskal 1">
+    <img src="https://www.escuelacaninamaya.com/images/xboxer.jpg.pagespeed.ic.Tt_reX5QUy.jpg" alt="Foto Truski y Patruskal 2">
+    <img src="https://d3ciu7npf6axud.cloudfront.net/09b7257c-4436-4f96-ac0d-38806947edab/images/breeds/Boxer.webp" alt="Foto Truski y Patruskal 3">
+</div>
+
+<div class="container">
+    <div class="profile">
+        <h2>Truskal y Patruskal</h2>
+        <p><strong>Edad:</strong> 3 años</p>
+        <p><strong>Raza:</strong> Mestiza</p>
+        <p><strong>Descripción:</strong> Dos hermanos inseparables buscan su hogar definitivo.</p>
+        <p>Truski y Patruskal son dos perritos adorables que han compartido cada momento de su vida juntos.
+            Tienen un vínculo único y especial: juegan, se cuidan y hasta se consuelan mutuamente.
+            Por eso, buscamos para ellos una familia que quiera darles la oportunidad de seguir creciendo lado a lado.</p>
+
+        <ul>
+            <li><strong>Truski:</strong> Alegre, curioso y siempre dispuesto a repartir besos.</li>
+            <li><strong>Patruskal:</strong> Tranquilo, cariñoso y el mejor compañero de siestas.</li>
+        </ul>
+
+        <p>Ambos son sociables, están acostumbrados a convivir con personas y otros animales,
+            y ya saben lo que significa recibir cariño… ¡solo les falta recibirlo de su familia para siempre!</p>
+
+        <p>💛 Adoptar a los dos no solo cambiará sus vidas, también llenará la tuya de amor por duplicado.</p>
     </div>
 
-    <div class="container">
-        <div class="profile">
-            <h2>Truskal y Patruskal</h2>
-            <p><strong>Edad:</strong> 3 años</p>
-            <p><strong>Raza:</strong> Mestiza</p>
-            <p><strong>Descripción:</strong> Dos hermanos inseparables buscan su hogar definitivo.</p>
-            <p>Truski y Patruskal son dos perritos adorables que han compartido cada momento de su vida juntos.
-                Tienen un vínculo único y especial: juegan, se cuidan y hasta se consuelan mutuamente.
-                Por eso, buscamos para ellos una familia que quiera darles la oportunidad de seguir creciendo lado a
-                lado.</p>
+    <div class="formulario">
+        <h3>Formulario de Adopción</h3>
+        <form id="formulario-adopcion">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
 
-            <ul>
-                <li><strong>Truski:</strong> Alegre, curioso y siempre dispuesto a repartir besos.</li>
-                <li><strong>Patruskal:</strong> Tranquilo, cariñoso y el mejor compañero de siestas.</li>
-            </ul>
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="telefono" required>
 
-            <p>Ambos son sociables, están acostumbrados a convivir con personas y otros animales,
-                y ya saben lo que significa recibir cariño… ¡solo les falta recibirlo de su familia para siempre!</p>
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required>
 
-            <p>💛 Adoptar a los dos no solo cambiará sus vidas, también llenará la tuya de amor por duplicado.</p>
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
 
-        </div>
-
-        <div class="formulario">
-            <h3>Formulario de Adopción</h3>
-            <form onsubmit="alert('¡Solicitud enviada!'); return false;">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" name="nombre" required>
-
-                <label for="telefono">Teléfono</label>
-                <input type="tel" id="telefono" name="telefono" required>
-
-                <label for="email">Correo electrónico</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
-
-                <button type="submit">📩 Enviar solicitud</button>
-            </form>
-        </div>
+            <button type="submit">📩 Enviar solicitud</button>
+        </form>
     </div>
+</div>
+
 <script>
   document.getElementById('formulario-adopcion').addEventListener('submit', async function(e) {
     e.preventDefault(); // Detiene el envío estándar
@@ -225,5 +223,4 @@
 </script>
 
 </body>
-
 </html>
