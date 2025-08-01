@@ -2,8 +2,9 @@
 
 **Patitas.Pet** es una plantilla moderna y responsiva desarrollada para organizaciones sin fines de lucro que promueven la adopción de mascotas. Está construida sobre tecnologías potentes como **Tailwind CSS**, **GSAP** y **Pinegrow Interactions**, permitiendo un diseño atractivo y animaciones fluidas, con estilos personalizados que hacen que cada componente luzca profesional y amigable.
 
-# Archivos
+# WEB
 ## HTML (`index.html`)
+Página web principal del proyecto con varios animales disponibles.
 - Estructura semántica y responsiva con Tailwind.
 - Secciones destacadas:
   - **Header**: enlaces de navegación y redes sociales.
@@ -16,7 +17,8 @@ Este archivo HTML muestra una página de error **404 - Página no encontrada**, 
 -   **Diseño responsive** y minimalista. 
 -   **Estilo CSS embebido** para facilitar su uso sin archivos externos.
 -   **Compatible** con la mayoría de navegadores modernos.
-## CSS (`style.txt`)
+## CSS (`style.css`)
+Hoja de estilos de la página web principal del proyecto.
 - Incluye `tailwind.css` con extensiones personalizadas.
 - Tipografía: **Space Grotesk** vía Google Fonts.
 - Modificadores de Tailwind extendidos, con clases personalizadas como:
@@ -26,7 +28,8 @@ Este archivo HTML muestra una página de error **404 - Página no encontrada**, 
 - Compatibilidad con elementos interactivos (`hover`, `focus`, `disabled`, etc.)
 - Clases definidas para:
   - Espaciado, tamaño, color, borde, display, tipografía, efectos responsivos y opacidad.
-## JavaScript (`script.txt`)
+## JavaScript (`script.js`)
+Archivo JS de la página principal del proyecto.
 - Carga el **Pinegrow Interactions Runtime 2.14**.
 - Integra animaciones con la librería **GSAP**.
 - Control de eventos:
@@ -50,6 +53,77 @@ Este fragmento HTML activa las funcionalidades de **Progressive Web App (PWA)** 
   - Precarga archivos HTML, CSS, JS y medios.
   - Actualiza dinámicamente los recursos del sitio.
   - Maneja eventos como instalación y activación.
+
+## Perfil Animal en adopción (`Adoptme.html`)
+Sitio web estático desarrollado en HTML, CSS y JavaScript. Su estructura incluye un header con navegación, una galería de imágenes responsiva, una sección de perfil con información detallada de los perros y un formulario de adopción funcional. El diseño visual está implementado con CSS puro, utilizando tipografía de Google Fonts, layout basado en grid y flexbox, colores coherentes y efectos de sombreado para un aspecto limpio y moderno.
+
+El formulario de adopción captura datos del usuario (nombre, teléfono, email y mensaje) y los envía mediante fetch a una API REST externa en formato JSON, mostrando mensajes de confirmación o error según la respuesta. Además, la página es completamente adaptable a dispositivos móviles gracias a media queries.
+
+## Página de registro de animales (`AñadirAnimal.html`)
+Web estática desarrollada con HTML, CSS y JavaScript, orientada al registro de nuevos animales para adopción. Incluye una barra de navegación con enlaces principales, un formulario organizado en tarjetas para ingresar datos del animal (nombre, edad, tamaño, descripción e imagen) y un botón de guardado.
+
+El diseño está implementado con CSS puro, utilizando tipografía de Google Fonts, layout basado en grid y componentes visuales con bordes redondeados, sombras y colores consistentes, asegurando una experiencia clara y atractiva.
+
+En el apartado funcional, la imagen del animal se carga a un bucket S3 mediante una URL prefirmada obtenida desde una API externa. Los datos del formulario se validan en el cliente antes de enviarlos, y pueden integrarse posteriormente con una base de datos como DynamoDB para su almacenamiento. La estructura es completamente adaptable a dispositivos móviles gracias al uso de estilos flexibles.
+
+## Perfil de protectora con integración en Cognito (`PerfilProtectoras.html`)
+
+Interfaz web estática construida con HTML, CSS y JavaScript que muestra el perfil de una protectora de animales. Incluye una barra de navegación, un avatar central, y una tarjeta de perfil con campos editables como correo electrónico, teléfonos, ubicaciones y descripción de la organización.
+
+El diseño está implementado con CSS puro, utilizando tipografía de Google Fonts, un layout basado en grid para organizar los datos, y estilos visuales modernos con bordes redondeados y sombras para mejorar la experiencia del usuario.
+
+La funcionalidad de edición de perfil está integrada con Amazon Cognito. Al pulsar "Editar perfil", el sistema obtiene la sesión activa del usuario y actualiza los atributos en el User Pool de Cognito mediante el SDK amazon-cognito-identity-js. De esta forma, los datos quedan vinculados directamente al usuario autenticado.
+
+## Panel de gestión de animales para protectoras (`Protectoras.html`)
+Web estática creada con HTML, Tailwind CSS y JavaScript. Presenta un dashboard de bienvenida con navegación superior, un grid dinámico de tarjetas para mostrar animales gestionados por una protectora, y un modal para editar la información de cada animal.
+
+La maquetación utiliza clases utilitarias de Tailwind para estilos responsivos, tipografía clara y componentes modernos con sombras, bordes redondeados y notificaciones (como el contador de mensajes). Las tarjetas de animales se generan dinámicamente desde un array en JavaScript, mostrando imagen, nombre y descripción.
+
+Además, incluye un modal para la edición de datos de animales que se activa al hacer clic en el botón de edición de cada tarjeta. La estructura está preparada para integrarse con una API de backend que permita guardar los cambios en una base de datos.
+
+## Pantalla de inicio de sesión de Patitas.Pet (`login.html`)
+La página es una interfaz de inicio de sesión estática desarrollada en HTML y CSS con soporte parcial de Tailwind para tipografía y espaciados. Su diseño aplica un fondo de imagen a pantalla completa y una tarjeta central con estilo _glassmorphism_ (fondo semitransparente con difuminado), generando un efecto moderno y limpio.
+
+El formulario de autenticación incluye campos para correo electrónico y contraseña, un botón de inicio de sesión estilizado y un enlace de registro. La estructura es sencilla, fácilmente integrable con servicios de autenticación externos como AWS Cognito o Firebase.
+## Pantalla de registro de usuarios de Patitas.Pet (`registro.html`)
+La página es un formulario de registro desarrollado en HTML y Tailwind CSS con un diseño _glassmorphism_ centrado en pantalla. Incluye campos para nombre, correo electrónico y contraseña, todos con validación requerida.
+
+Integra la librería **Amazon Cognito Identity JS**, lo que permite conectar el formulario con AWS Cognito para gestionar el alta de usuarios. El diseño es completamente responsivo, con animación de entrada suave y estilos optimizados para una experiencia moderna y clara.
+## Registro de usuarios con AWS Cognito (`registro.js`)
+Este fragmento de JavaScript implementa la lógica de registro de usuarios para tu formulario de **registro de Patitas.Pet** con **AWS Cognito**. Explicación breve y clara:
+
+### **Cómo funciona**
+1.  **Intercepción del formulario:**
+
+    -   Se escucha el evento `submit` del formulario `#registro-form` y se evita el envío por defecto (`e.preventDefault()`).
+        
+2.  **Obtención de datos:**
+    
+    -   Se capturan los valores de **nombre**, **correo electrónico** y **contraseña** desde los inputs correspondientes.
+        
+3.  **Configuración de AWS Cognito:**
+    
+    -   Se define el `UserPoolId` y `ClientId` del **User Pool** de Cognito.
+        
+4.  **Definición de atributos de usuario:**
+    
+    -   Se crea una lista de atributos:
+        
+        -   `email` (estándar de Cognito).
+            
+        -   `custom:nombre` (atributo personalizado en Cognito).
+            
+5.  **Registro en Cognito:**
+    
+    -   Se llama a `userPool.signUp()` con los datos del usuario.
+        
+    -   Si hay error, se muestra un `alert` con el mensaje.
+        
+    -   Si es exitoso, se notifica al usuario y se redirige a la pantalla de login.
+
+El usuario se registra en tu **User Pool de Cognito** con los atributos configurados y debe confirmar su cuenta desde el email recibido.
+
+# FUNCIONES
 
 ## Función Lambda: Crear Animal (`Funcion crear animal.py`)
 Esta función Lambda escrita en **Python** permite registrar nuevos animales en la base de datos de **Amazon DynamoDB**, vinculándolos a una protectora específica. Realiza lo siguiente:
@@ -141,6 +215,24 @@ Este código implementa una función AWS Lambda que recibe datos desde un evento
 -Envía un correo electrónico a una dirección predefinida usando SES.
 -Devuelve una respuesta JSON indicando si el envío fue exitoso o si ocurrió un error.
 
+## Función Lambda: Enviar solicitudes de adopción por email usando Cognito y SES (`EnviarSolicitudAdopcion.py`)
+Esta función Lambda en AWS recibe los datos de una solicitud de adopción enviados desde la web, incluyendo nombre, teléfono, email, mensaje y el ID de la protectora.
+Primero consulta el User Pool de Cognito para obtener el correo electrónico asociado a esa protectora usando su ID.
+Luego, utiliza Amazon SES para enviar un email a la protectora con la información de la solicitud, incluyendo los datos del interesado y su mensaje.
+Finalmente, responde con un mensaje de éxito si el correo se envía correctamente, o un error si ocurre algún problema durante el proceso.
+## Función Lambda: Exportación automatizada de tabla DynamoDB a S3 (`Funcion ExportTableToPointInTime.py`)
+Esta función Lambda exporta una tabla DynamoDB a un bucket de S3 configurado vía variables de entorno.  
+Usa la API `export_table_to_point_in_time` para crear una exportación en formato JSON de DynamoDB, con un prefijo que incluye la fecha y hora actual para identificar la exportación.  
+El ARN de la tabla se construye dinámicamente usando la región y el ID de cuenta extraídos del contexto de ejecución.  
+Devuelve un mensaje de éxito con el ARN de la exportación iniciada o un error si la operación falla.
+## Función Lambda: Asignación automática de grupo a usuario tras confirmación en Cognito (`Funcion PostConfirmation.py`)
+Este código es una función Lambda que se activa después de que un usuario confirma su registro en un User Pool de AWS Cognito (evento PostConfirmation_ConfirmSignUp). Su función es añadir automáticamente al usuario confirmado al grupo "PatitasPetUsers" dentro del User Pool especificado. Esto permite gestionar fácilmente permisos y roles para los usuarios recién registrados, asegurando que tengan los accesos adecuados desde el primer momento.
+## Función Lambda: Flujo completo de envío y registro de solicitudes de adopción (`Función envío y registro de solicitudes de adopción.json`)
+Esta función gestiona el proceso integral de envío de solicitudes de adopción, registrando los datos del solicitante en una base de datos DynamoDB y notificando automáticamente a la protectora correspondiente mediante un correo electrónico enviado con AWS SES. Así se garantiza tanto el almacenamiento seguro de la información como la comunicación inmediata para agilizar el proceso de adopción.
+## Función Lambda: Asignación automática de grupo a usuario tras confirmación en Cognito (`PostConfirmationUpdate.py`)
+El primer código "PostConfirmation" es una función que, tras confirmar el registro de un usuario en Cognito, lo añade a un grupo y además guarda sus datos (incluyendo atributos personalizados) en una tabla DynamoDB, con manejo de errores. Este segundo código, unido al anterior, añade el asignar al usuario al grupo en Cognito y no registra datos adicionales ni gestiona errores. 
+# POLÍTICAS
+
 ## Política de configuración de acceso S3 (`Politica json solo lectura.json`)
 Este archivo contiene una política de control de acceso para habilitar la lectura pública de los archivos estáticos del proyecto alojados en **Amazon S3**. Descripción general:
 -Permitir que cualquier usuario (Principal: `"*"`) pueda acceder a los objetos almacenados en el bucket S3 `patitas-pet-frontend`.
@@ -171,6 +263,12 @@ Recursos:
  - Objetos del bucket: arn:aws:s3:::patitas-backups-dynamo/*
 
 Con esta configuración, el rol autorizado puede realizar exportaciones de tablas DynamoDB directamente al bucket especificado.
+
+## Política IAM para Permitir la Adición de Usuarios a Grupos en Cognito (`Permiso Lambda a Cognito.json`)
+Esta política concede permiso para ejecutar la acción AdminAddUserToGroup en un User Pool específico de AWS Cognito. Permite que un rol o usuario IAM administre la asignación de usuarios a grupos dentro del User Pool identificado por su ARN, facilitando así la gestión de grupos y roles en la autenticación de usuarios.
+## Política IAM para Permitir Escritura en la Tabla DynamoDB "Protectoras" (`PermisoPut_Protectoras.json`)
+Esta política permite la acción `PutItem` sobre la tabla DynamoDB llamada "Protectoras" en la región us-east-1. Autoriza a un rol o usuario IAM a insertar o actualizar elementos en dicha tabla, facilitando la gestión y almacenamiento de datos relacionados con protectoras dentro de la base de datos.
+# SCRIPTS
 ## Script para creación de alarmas en AWS CloudWatch para funciones Lambda (`Script creación alarmas AWS CloudWatch para funciones Lambda.ps1`)
 Este script de PowerShell crea alarmas de CloudWatch para funciones AWS Lambda y configura un tema de SNS para recibir notificaciones por correo electrónico cuando se detecten errores.
 
